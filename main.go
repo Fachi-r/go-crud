@@ -2,25 +2,41 @@ package main
 
 import (
 	"github.com/fachi-r/go-crud/controllers"
-	"github.com/fachi-r/go-crud/initializers"
+	"github.com/fachi-r/go-crud/database"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
 func init() {
-	initializers.LoadEnvVariables()
-	initializers.ConnectToDB()
+	database.LoadEnvVariables()
+	database.ConnectToDB()
 }
 
 func main() {
 
 	r := gin.Default()
-	r.GET("/posts", controllers.GetPosts)
-	r.GET("/posts/:id", controllers.GetPost)
+	r.Use(cors.Default())
+	// Load Static assets (CSS files, JavaScript files)
+	r.Static("/assets", "./assets")
+	// Load HTML files
+	r.LoadHTMLGlob("assets/html/*")
 
-	r.POST("/posts", controllers.CreatePosts)
-	r.PUT("/posts/:id", controllers.UpdatePost)
+	/* 2. Setup website routes*/
+	// Home Page (Login with receipt)
+	r.GET("/", controllers.IndexPage)
 
-	r.DELETE("/posts/:id", controllers.DeletePost)
+	// Admin Page routes
+	r.GET("/admin", controllers.AdminPage)
+
+	// After login, serve the form specified by formID
+	r.GET("/forms/:id", controllers.GetForm)
+
+	// Validate receipt number
+	r.GET("/api/receipts/:receiptNumber", controllers.CheckReceipt)
+	// Validate student loan number
+	// Get a specific student record
+	r.GET("/api/students", controllers.GetAllStudents)
+	r.GET("/api/students/:loanNumber", controllers.GetStudent)
 
 	r.Run()
 }
