@@ -1,76 +1,47 @@
 package models
 
-/* Base level of the form.
-Contains all fields in common between all the other forms
-*/
-type Form struct {
-	Student
-	Bank
-	Guardian
+import "gorm.io/gorm"
+
+// Receipts Table
+type Receipts struct {
+	Number uint `gorm:"primarykey"`
 }
 
-type FirstYearForm struct {
-	NRC           string `json:"nrc"`
-	Name          string `json:"name"`
-	YearOfStudy   string `json:"year_of_study"`
-	Programme     string `json:"programme"`
-	StudentNumber int64  `json:"student_number"`
-
-	ReceiptNumber int64 `json:"receipt_number"`
-	LoanNumber    int64 `json:"loan_number"`
-
-	Bank          string `json:"bank"`
-	Branch        string `json:"branch"`
-	AccountName   string `json:"account_name"`
-	AccountNumber int64  `json:"account_number"`
-
-	Guardian     string `json:"guardian"`
-	Gender       string `json:"gender"`
-	Nationality  string `json:"nationality"`
-	Relationship string `json:"relationship"`
-
-	Address       string `json:"address"`
-	Town          string `json:"town"`
-	Province      string `json:"province"`
-	PostalAddress string `json:"postal_address"`
-	Phone         uint   `json:"phone"`
-	Email         string `json:"email"`
-}
-
-type ReturningForm struct {
-	Student
+// HELSB Table
+type HELSB struct {
+	CEO string
 }
 
 type Student struct {
-	NRC int64 `json:"nrc" gorm:"primarykey"`
-
-	Name          string `json:"name"`
-	Programme     string `json:"programme"`
+	NRC           uint
+	Name          string
+	Programme     string
 	YearOfStudy   string `json:"year_of_study"`
-	StudentNumber int64  `json:"student_number"`
+	StudentNumber uint   `json:"student_number"`
+	LoanNumber    uint   `json:"loan_number" gorm:"primarykey"`
 
-	ReceiptNumber int64 `json:"receipt_number"`
-	LoanNumber    int64 `json:"loan_number"`
-}
-
-type Bank struct {
-	BankName      string `json:"bank" gorm:"primarykey"`
-	Branch        string `json:"branch"`
+	// Bank Details
+	Bank          string
+	Branch        string
 	AccountName   string `json:"account_name"`
-	AccountNumber int64  `json:"account_number"`
+	AccountNumber uint   `json:"account_number"`
+
+	// ID of guardian
+	Guardian uint
 }
 
 type Guardian struct {
+	gorm.Model
 	GuardianName string `json:"guardian"`
-	Relationship string `json:"relationship"`
-	Gender       string `json:"gender"`
-	Nationality  string `json:"nationality"`
+	Relationship string
+	Gender       string
+	Nationality  string
 
-	Address  string `json:"address"`
-	Town     string `json:"town"`
-	Province string `json:"province"`
+	Address  string
+	Town     string
+	Province string
 
 	PostalAddress string `json:"postal_address"`
-	Phone         uint   `json:"phone"`
-	Email         string `json:"email"`
+	Phone         uint
+	Email         string
 }

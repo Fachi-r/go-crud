@@ -1,15 +1,15 @@
 package main
 
 import (
-	"github.com/fachi-r/go-crud/initializers"
+	"github.com/fachi-r/go-crud/database"
 	"github.com/fachi-r/go-crud/models"
 )
 
 func init() {
-	initializers.LoadEnvVariables()
-	initializers.ConnectToDB()
+	database.LoadEnvVariables()
+	database.ConnectToDB()
 }
 
 func main() {
-	initializers.DB.AutoMigrate(&models.Post{})
+	database.DB.AutoMigrate(&models.Student{}, &models.HELSB{}, &models.Receipts{})
 }
