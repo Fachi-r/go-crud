@@ -19,16 +19,16 @@ NRC/No.:                        [student.nrc]
 
 <!-- Bank Details -->
 
-Name of Bank:        [student.bank.bank_name]
-Name of Account:     [student.bank.account_name]
-Name of Bank Branch: [student.bank.branch]
-Bank Account No.:    [student.bank.account_number]
+Name of Bank:        [student.bank_name]
+Name of Account:     [student.bank_account_name]
+Name of Bank Branch: [student.bank_branch]
+Bank Account No.:    [student.bank_account_number]
 
 ## STUDENT LOAN AGREEMENT FORM
 
 An agreement made and entered into between the Higher Education Loans and Scholarships Board, (herein called the Loans Board) of the first part; and [student.name] (hereinafter called the Student) of the second part;
 
-WHEREAS, the student wishes to pursue a course of studies at [university] (Hereinafter called the Institution) for purpose of acquiring the qualification of. [student.program] in the School of [university.school]
+WHEREAS, the student wishes to pursue a course of studies at THE UNIVERSITY OF ZAMBIA (Hereinafter called the Institution) for purpose of acquiring the qualification of. [student.degree] in the School of [student.school]
 
 AND WHEREAS, the student has applied to the Loans Board for a loan to enable him/her to attend the institution for that purpose:
 
@@ -42,17 +42,17 @@ NOTE: Any amount payable to the student is determined by the Board at the time o
 
 ## CONDITIONS OF THE LOAN AGREEMENT
 
-a) The loan is only valid for one academic year/semester but may be renewed on application after production of satisfactory academic results;
+(a) The loan is only valid for one academic year/semester but may be renewed on application after production of satisfactory academic results;
 
-b) Part of the loan due to the student shall include payment towards insurance of the loan;
+(b) Part of the loan due to the student shall include payment towards insurance of the loan;
 
-c) Part of the loan due to the student may be paid to the beneficiary through a bank account as funds become available;
+(c) Part of the loan due to the student is paid to the beneficiary through a bank account as funds become available;
 
-d) Students awarded the loan are expected to meet any shortfall not covered by the loan;
+(d) Students awarded the loan are expected to meet any shortfall not covered by the loan;
 
-c) Students in receipt of the loan or scholarship provided by the Board will not qualify for any other offer at the same level of qualification.
+(e) Students in receipt of the loan or scholarship provided by the Loans Board will not qualify for any other offer at the same level of qualification.
 
-f) The loan is given to obtain one study programme and it will not be extended to enable students to undertake an additional or higher qualification than that for which the selection was made.
+(f) The loan is given to obtain one study programme and it will not be extended to enable students to undertake an additional or higher qualification than that for which the selection was made.
 
 NOTE: The Board will only effect the loan if the student shows evidence of registration with the university and has a valid bank account.
 
@@ -82,7 +82,7 @@ NOTE: The Board will only effect the loan if the student shows evidence of regis
 
       (ii) Through selected Banks on the advice of the Loans Board, or
 
-      (ii) Through employers to the Board.
+      (iii) Through employers to the Board.
 
 3. The obligations of the loan beneficiary's Parents/Guardian and Guarantor are to ensure that:
 
@@ -114,7 +114,7 @@ NOTE: The Board will only effect the loan if the student shows evidence of regis
 
    (j) For any reason which the Board, in its absolute discretion, may consider good and sufficient.
 
-5. The Board may defer the repayment of any amount due from the student/loan beneficiary in terms of this agreement for such a period or periods as it may deem necessary and the granting of further time for repayment. Any such relief or indulgence by the Board shall not be construed as a waiver of its rights to enforce the provision of this agreement.
+5. The Loans Board may defer the repayment of any amount due from the student loan beneficiary in terms of this agreement for such a period or periods as it may deem necessary and the granting of further time for repayment. Any such relief or indulgence by the Loans Board shall not be construed as a waiver of its rights to enforce the provision of this agreement.
 
 6. The loan awarded to the student shall not be extended to any other person.
 
@@ -161,7 +161,7 @@ Signature of Parent/Guardian/Guarantor: <!-- mightDiscard? -->
 
 Date: [Date.now()]
 
-10. DECLARATION:
+### DECLARATION:
 
 I, [student.name], understand that this is a:
 
@@ -171,13 +171,11 @@ I, [student.name], understand that this is a:
 
 To the best of my knowledge, the information I have given is the absolute truth. I also understand that any false information on this form will lead to immediate forfeiture of the loan and possible prosecution or both.
 
-Signature of Student: <!-- mightDiscard? -->
-
 Date: [Date.now()]
 
 Director - Higher Education Loans and Scholarship Board
 For the Government of the Republic of Zambia
 
-At [university] in [location] this [Date.now().day] day of [Date.now().month] [Date.now().year]
+On this day of [Date.now().now]
 
 [page 4]
