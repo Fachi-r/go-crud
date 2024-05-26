@@ -13,18 +13,20 @@ type HELSB struct {
 }
 
 type Student struct {
-	NRC           uint
+	LoanNumber    uint `gorm:"primarykey"`
+	NRC           string
 	Name          string
 	Programme     string
-	YearOfStudy   string `json:"year_of_study"`
-	StudentNumber uint   `json:"student_number"`
-	LoanNumber    uint   `json:"loan_number" gorm:"primarykey"`
+	Degree        string
+	School        string
+	YearOfStudy   uint
+	StudentNumber uint
 
 	// Bank Details
 	Bank          string
 	Branch        string
-	AccountName   string `json:"account_name"`
-	AccountNumber uint   `json:"account_number"`
+	AccountName   string
+	AccountNumber uint
 
 	// ID of guardian
 	Guardian uint
@@ -32,7 +34,8 @@ type Student struct {
 
 type Guardian struct {
 	gorm.Model
-	GuardianName string `json:"guardian"`
+	GuardianName string
+	GuardianNRC  string
 	Relationship string
 	Gender       string
 	Nationality  string
@@ -41,7 +44,7 @@ type Guardian struct {
 	Town     string
 	Province string
 
-	PostalAddress string `json:"postal_address"`
-	Phone         uint
+	PostalAddress string
+	Phone         string
 	Email         string
 }
