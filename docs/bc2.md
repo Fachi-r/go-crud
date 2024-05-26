@@ -26,7 +26,7 @@ NRC/No: [student.nrc]
 
 An agreement made and entered into by and between [HELSB.CEO] in his/her capacity as Chief Executive Officer, Higher Education Loans and Scholarships Board, for and on behalf of the Higher Education Loans and Scholarships Board (herein called the Loans Board) of the first part; and second part; [student.name] (Hereinafter called the Student) of the second part;
 
-WHEREAS, the student wishes to pursue a course of studies at THE UNIVERSITY OF ZAMBIA (Hereinafter called the Institution) for purpose of acquiring the qualification of. [student.degree] in the School of [student.school]
+WHEREAS, the student wishes to pursue a course of studies at THE UNIVERSITY OF ZAMBIA (Hereinafter called the Institution) for purpose of acquiring the qualification of. [student.degree] degree in the School of [student.school]
 
 AND WHEREAS the student has applied to the Loans Board for a loan to enable him/her to attend the institution for that purpose:
 
