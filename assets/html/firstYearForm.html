@@ -21,7 +21,7 @@
 		></script>
 	</head>
 	<body>
-		<section class="container col-md-7 my-5">
+		<section class="body container col-md-7 my-5">
 			<h1 class="mb-4">
 				HELSB Higher Education Loans and Scholarships Board
 			</h1>
@@ -29,17 +29,17 @@
 			<div class="row mb-4 form-metadata">
 				<div class="col-md-6">
 					Student Receipt:
-					<span id="receipt_number" aria-hidden="true"></span>
+					<span class="receipt_number" aria-hidden="true"></span>
 				</div>
 				<div class="col-md-6">
-					HELSB/SL/
-					<span id="form_number"></span>
+					HELSB / SL /
+					<span id="form_number">Form 1</span>
 					/
-					<span id="formID"></span>
+					<span class="form_id"></span>
 				</div>
 			</div>
 
-			<form id="student-loan-form" class="needs-validation">
+			<form id="form" class="needs-validation">
 				<section id="details-section" class="row g-3 mb-4">
 					<div class="col student-details">
 						<!-- Student Details -->
@@ -48,24 +48,21 @@
 								Programme of Study
 							</label>
 							<input
+								id="student-program"
 								type="text"
 								class="form-control"
-								id="student-program"
 								required
 							/>
-							<div class="invalid-feedback">
-								Please enter a programme of study.
-							</div>
 						</div>
 
 						<div class="col">
-							<label for="studentYear" class="form-label">
+							<label for="student-year" class="form-label">
 								Current Year of Study:
 							</label>
 							<select
+								id="student-year"
 								class="form-select"
 								aria-label="Disabled select example"
-								id="studentYear"
 								aria-disabled="true"
 								disabled
 							>
@@ -78,33 +75,28 @@
 						</div>
 
 						<div class="col">
-							<label for="student_number" class="form-label">
+							<label for="student-number" class="form-label">
 								University Student ID:
 							</label>
 							<input
+								id="student-number"
 								type="number"
 								class="form-control"
-								id="student_number"
 								required
 							/>
-							<div class="invalid-feedback">
-								Please enter the student number.
-							</div>
 						</div>
 
 						<div class="col">
 							<label for="student-nrc" class="form-label">NRC/No.</label>
 							<input
+								id="student-nrc"
 								type="text"
 								class="form-control"
-								id="student-nrc"
 								required
 							/>
-							<div class="invalid-feedback">
-								Please enter the NRC/No.
-							</div>
 						</div>
 					</div>
+
 					<div class="col bank-details">
 						<!-- Bank Details -->
 						<div class="col">
@@ -112,14 +104,11 @@
 								>Name of Bank</label
 							>
 							<input
+								id="bank-name"
 								type="text"
 								class="form-control"
-								id="bank-name"
 								required
 							/>
-							<div class="invalid-feedback">
-								Please enter the name of the bank.
-							</div>
 						</div>
 
 						<div class="col">
@@ -127,14 +116,11 @@
 								>Name of Account</label
 							>
 							<input
+								id="account-name"
 								type="text"
 								class="form-control"
-								id="account-name"
 								required
 							/>
-							<div class="invalid-feedback">
-								Please enter the name of the account.
-							</div>
 						</div>
 
 						<div class="col">
@@ -142,69 +128,70 @@
 								>Name of Bank Branch</label
 							>
 							<input
+								id="bank-branch"
 								type="text"
 								class="form-control"
-								id="bank-branch"
 								required
 							/>
-							<div class="invalid-feedback">
-								Please enter the name of the bank branch.
-							</div>
 						</div>
 						<div class="col">
 							<label for="account-number" class="form-label">
 								Bank Account No.
 							</label>
 							<input
+								id="account-number"
 								type="text"
 								class="form-control"
-								id="account-number"
 								required
 							/>
-							<div class="invalid-feedback">
-								Please enter the bank account number.
-							</div>
 						</div>
 					</div>
 				</section>
 
 				<section id="agreement-clause" class="mb-4">
+					<h2 class="text-center">Student Loan Agreement Form</h2>
 					<p>
 						An agreement made and entered into between the Higher
 						Education Loans and Scholarships Board, (herein called the
 						Loans Board) of the first part; and
 						<input
-							id="studentName"
-							class="form-control form-control-sm"
+							id="student-name"
+							class="form-control w-75"
 							type="text"
 							placeholder="Enter full name"
 							required
 						/>
 						(hereinafter called the Student) of the second part;
 					</p>
+
 					<p>
-						WHEREAS, the student wishes to pursue a course of studies at
-						The University Of Zambia, (Hereinafter called the Institution)
-						for purpose of acquiring the qualification of
-						<span class="studentProgram">(programme)</span> in the School
-						of
-							<input
-								type="text"
-								class="form-control form-control-sm"
-								id="universitySchool"
-								placeholder="e.g Natural Science"
-								required
-							/>
+						<b>WHEREAS</b>, the student wishes to pursue a course of
+						studies at The University Of Zambia, (Hereinafter called the
+						Institution) for purpose of acquiring the qualification of
+						<input
+							id="student-degree"
+							type="text"
+							class="form-control col-md-6"
+							placeholder="e.g Bachelor's"
+						/>
+						degree in the School of
+						<input
+							id="student-school"
+							type="text"
+							class="form-control col-md-6"
+							placeholder="e.g Natural Science"
+							required
+						/>
 					</p>
 					<p>
-						AND WHEREAS, the student has applied to the Loans Board for a
-						loan to enable him/her to attend the institution for that
-						purpose:
+						<b>AND WHEREAS</b>, the student has applied to the Loans Board
+						for a loan to enable him/her to attend the institution for
+						that purpose:
 					</p>
 					<p>
-						NOW THEREFORE, in consideration of the undertaking by the
-						student herein contained, the Board grants to the student such
-						a loan by making payment for the following:
+						<b>NOW THEREFORE</b>, in consideration of the undertaking by
+						the student herein contained, the Board grants to the student
+						such a loan by making payment for the following:
 					</p>
 					<ul>
 						<li>
@@ -217,9 +204,11 @@
 						</li>
 					</ul>
 					<p>
-						<b>NOTE:</b> Any amount payable to the student is determined
-						by the Board at the time of application, and is not negotiable
-						by the student or students' union.
+						<b
+							>NOTE: Any amount payable to the student is determined by
+							the Board at the time of application, and is not negotiable
+							by the student or students' union.</b
+						>
 					</p>
 				</section>
 
@@ -228,7 +217,7 @@
 					<ol>
 						<li>
 							The loan is only valid for one academic year/semester but
-							may be renewed on application after production of
+							<b>may be</b> renewed on application after production of
 							satisfactory academic results;
 						</li>
 						<li>
@@ -311,55 +300,59 @@
 
 				<section id="guardian-details-form">
 					<p class="mt-5">
-						IN WITNESS WHEREOF the parties have set their hands on the
-						dates shown:
+						<b>IN WITNESS WHEREOF</b> the parties have set their hands on
+						the dates shown:
 					</p>
 					<div class="col-md-6">
-						<span class="studentName"></span>
+						<span class="student_name"></span>
 					</div>
 					<div class="mt-3">
-						On this day of <span class="date"></span>, 2024.
+						On this day of <span class="date"></span>.
 					</div>
 
-					<div class="col-md-4">
-						<label for="guardianName"
+					<div class="col">
+						<label for="guardian-name" class="form-label"
 							>Name of Parent/Guardian/Guarantor:</label
 						>
 						<input
+							id="guardian-name"
 							type="text"
 							class="form-control"
-							id="guardianName"
 							required
 						/>
 					</div>
 
 					<div class="row mt-3">
 						<div class="col-md-4">
-							<label for="guardianNRC">NRC No.:</label>
+							<label for="guardian-nrc" class="form-label"
+								>NRC No.:</label
+							>
 							<input
+								id="guardian-nrc"
 								type="text"
 								class="form-control"
-								id="guardianNRC"
 								required
 							/>
 						</div>
 						<div class="col-md-4">
-							<label for="guardianNationality">Nationality:</label>
+							<label for="guardian-nationality" class="form-label"
+								>Nationality:</label
+							>
 							<input
+								id="guardian-nationality"
 								type="text"
 								class="form-control"
-								id="guardianNationality"
 								required
 							/>
 						</div>
 						<div class="col-md-4">
-							<label for="guardianGender" class="form-label"
+							<label for="guardian-gender" class="form-label"
 								>Gender:</label
 							>
 							<select
+								id="guardian-gender"
 								class="form-select"
-								name="guardianGender"
-								id="guardianGender"
+								name="guardian-gender"
 								required
 							>
 								<option value="male">Male</option>
@@ -368,49 +361,59 @@
 						</div>
 					</div>
 					<div class="mt-3">
-						<label for="guardianRelationship">Relationship:</label>
+						<label for="guardian-relationship" class="form-label"
+							>Relationship:</label
+						>
 						<input
+							id="guardian-relationship"
 							type="text"
 							class="form-control"
-							id="guardianRelationship"
 							required
 						/>
 					</div>
 					<div class="mt-3">
-						<label for="guardianAddress">Residential Address:</label>
+						<label for="guardian-address" class="form-label"
+							>Residential Address:</label
+						>
 						<input
+							id="guardian-address"
 							type="text"
 							class="form-control"
-							id="guardianAddress"
 							required
 						/>
 					</div>
 					<div class="row mt-3">
 						<div class="col-md-6">
-							<label for="guardianTown">Town/District:</label>
+							<label for="guardian-town" class="form-label"
+								>Town/District:</label
+							>
 							<input
+								id="guardian-town"
 								type="text"
 								class="form-control"
-								id="guardianTown"
 							/>
 						</div>
 						<div class="col-md-6">
-							<label for="guardianProvince">Province:</label>
+							<label for="guardian-province" class="form-label"
+								>Province:</label
+							>
 							<input
+								id="guardian-province"
 								type="text"
 								class="form-control"
-								id="guardianProvince"
 							/>
 						</div>
 					</div>
 					<div class="mt-3">
-						<label for="guardianPostalAddress">Postal Address:</label>
+						<label for="guardian-postal_address" class="form-label"
+							>Postal Address:</label
+						>
 						<div class="input-group mb-3">
 							<span class="input-group-text" id="prepend">P.O.Box:</span>
 							<input
+								id="guardian-postal_address"
 								type="text"
 								class="form-control"
-								id="guardianPostalAddress"
 								aria-describedby="prepend"
 								required
 							/>
@@ -418,62 +421,71 @@
 					</div>
 					<div class="row mt-3">
 						<div class="col-md-6">
-							<label for="guardianPhone">Mobile No.:</label>
+							<label for="guardian-phone" class="form-label"
+								>Mobile No.:</label
+							>
 							<div class="input-group mb-3">
 								<span class="input-group-text" id="prepend">+</span>
 								<input
-									type="number"
+									id="guardian-phone"
+									type="tel"
 									class="form-control"
-									id="guardianPhone"
 									required
 								/>
 							</div>
 						</div>
 						<div class="col-md-6">
-							<label for="guardianEmail">Email Address:</label>
+							<label for="guardian-email" class="form-label"
+								>Email Address:</label
+							>
 							<input
+								id="guardian-email"
 								type="email"
 								class="form-control"
-								id="guardianEmail"
 							/>
 						</div>
 					</div>
 					<div class="mt-5">
-						<label for="date">Date:</label>
+						<label for="date" class="form-label">Date:</label>
 						<span class="date"></span>
 					</div>
 				</section>
+
+				<section id="declaration">
+					<h2 class="mt-5">DECLARATION:</h2>
+					<p class="mt-3">
+						I, <span class="student_name"></span>, understand that this is
+						a:
+					</p>
+					<p>
+						(a) loan and that I must abide by the agreement governing the
+						receipt of the student loan;
+					</p>
+					<p>
+						(b) loan and not Grant and that I have to pay back at the rate
+						of interest as may be determined by the Board on the loan paid
+						in line with the act No. 31 of 2016 and I undertake to abide
+						by this agreement and hereby agree that the loan shall be paid
+						by me in order to ensure the continuity of the Loan Scheme for
+						the benefit of others.
+					</p>
+					<p>
+						To the best of my knowledge, the information I have given is
+						the absolute truth. I also understand that any false
+						information on this form will lead to immediate forfeiture of
+						the loan and possible prosecution or both.
+					</p>
+				</section>
+
+				<button class="btn btn-primary submit_btn" type="submit">
+					Submit Form
+				</button>
 			</form>
 
-			<section id="declaration">
-				<h2 class="mt-5">DECLARATION:</h2>
-				<p class="mt-3">
-					I, <span class="studentName"></span>, understand that this is a:
-				</p>
-				<p>
-					(a) loan and that I must abide by the agreement governing the
-					receipt of the student loan;
-				</p>
-				<p>
-					(b) loan and not Grant and that I have to pay back at the rate of
-					interest as may be determined by the Board on the loan paid in
-					line with the act No. 31 of 2016 and I undertake to abide by this
-					agreement and hereby agree that the loan shall be paid by me in
-					order to ensure the continuity of the Loan Scheme for the benefit
-					of others.
-				</p>
-				<p>
-					To the best of my knowledge, the information I have given is the
-					absolute truth. I also understand that any false information on
-					this form will lead to immediate forfeiture of the loan and
-					possible prosecution or both.
-				</p>
-
-				<footer class="mt-5">
-					<p>Director - Higher Education Loans and Scholarship Board</p>
-					<p>For the Government of the Republic of Zambia</p>
-				</footer>
-			</section>
+			<footer class="mt-5">
+				<p>Director - Higher Education Loans and Scholarship Board</p>
+				<p>For the Government of the Republic of Zambia</p>
+			</footer>
 		</section>
 	</body>
 </html>
