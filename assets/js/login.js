@@ -8,7 +8,6 @@
       - `#note` After someone applies, the receipt is removed from the database, to avoid someone trying to use the same receipt as proof of payment.
  */
 
-
 const form = document.getElementById("form")
 const checkbox = document.getElementById("checkbox")
 const submitBtn = document.querySelector("submit_btn")
@@ -18,7 +17,19 @@ form.addEventListener("submit", validate)
 // This runs everytime the checkbox is changed
 checkbox.addEventListener('change', showOptions);
 
-/** Sends a request to the backend to check if the receipt number entered exists in the database*/
+/** Show additional options for returning student login */
+function showOptions() {
+   var loanNumber = document.getElementById("loan_number")
+   var options = document.querySelector(".options")
+
+   // Disable or enable the input fields based on the checkbox value
+   options.classList.toggle("enable", checkbox.checked)
+
+   loanNumber.disabled = !checkbox.checked
+   loanNumber.ariaDisabled = !checkbox.checked
+}
+
+/** Sends a request to the backend to check if the receipt number and/or student exists in the database*/
 async function validate(event) {
    // prevent page from reloading
    event.preventDefault()
@@ -29,76 +40,46 @@ async function validate(event) {
    let receipt = document.getElementById("receipt_number")
    try {
       // Api returns JSON in the format {"exists": true || false}
-      const response = await fetch(`http://localhost:5000/api/receipts/${receipt.value}`);
+      const response = await fetch(`http://localhost:5000/validate/receipts/${receipt.value}`);
       const data = await response.json();
 
       console.log("Result => ", data.exists);
 
-      if (data.exists) {
-         // Redirect to html page based on optional inputs
-      } else {
+      if (!data.exists) {
          receipt.classList.add("is-invalid")
+         return
       }
-   } catch (error) {
+   }
+   catch (error) {
       console.error('Error:', error);
-      receipt.classList.add("is-invalid")
+      return
    }
 
+   // If returning student, validate student loan number and redirect to returning students form
    if (checkbox.checked) {
       console.log("Checking loan number...");
 
-      // Validate Student loan number
       let loanNumber = document.getElementById("loan_number")
       try {
          // Api returns JSON in the format {"exists": true || false}
-         const response = await fetch(`http://localhost:5000/api/student/${loanNumber.value}`);
+         const response = await fetch(`http://localhost:5000/validate/students/${loanNumber.value}`);
          const data = await response.json();
 
          console.log("Result => ", data.exists);
 
          if (data.exists) {
-            checkbox.checked ?
-               /* Redirect to returning student form*/
-               document.location.assign("http://localhost:5000/forms/returning")
-               :
-               /* Redirect to first year form*/
-               document.location.assign("http://localhost:5000/forms/first")
+            /* Redirect to returning student form with loan number*/
+            window.location.href = `http://localhost:5000/forms/returning/?loan_number=${loanNumber.value}`
          } else {
             loanNumber.classList.add("is-invalid")
+            return
          }
       } catch (error) {
          console.error('Error:', error);
-         loanNumber.classList.add("is-invalid")
+         return
       }
+   } else {
+      /* Redirect to first year form with receipt number*/
+      document.location.href = `http://localhost:5000/forms/first/?receipt=${receipt.value}`
    }
 }
-
-/** Show additional options for returning student login */
-function showOptions() {
-   var loanNumber = document.getElementById("loan_number")
-   var yearOfStudy = document.getElementById("year_of_study")
-   var options = document.querySelector(".options")
-   // var files = document.querySelectorAll("#formFile")
-
-   // files.forEach(file => {
-   //    file.disabled = !checkbox.checked
-   //    file.ariaDisabled = !checkbox.checked
-   // })
-
-   // Disable or enable the input fields based on the checkbox value
-   options.classList.toggle("enable")
-
-   loanNumber.disabled = !checkbox.checked
-   loanNumber.ariaDisabled = !checkbox.checked
-   yearOfStudy.disabled = !checkbox.checked
-   yearOfStudy.ariaDisabled = !checkbox.checked
-}
-
-function loadInputs() {
-   var options = document.querySelector('options');
-
-   options.classList.toggle("enabled")
-   options.ariaHidden("false")
-   console.log("options classes: ", options.classList);
-}
-
