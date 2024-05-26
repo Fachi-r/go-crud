@@ -13,38 +13,65 @@ import (
 
 // Return Index page
 func IndexPage(c *gin.Context) {
-	c.HTML(http.StatusOK, "index.html", nil)
-}
-
-// Return Admin page
-func AdminPage(c *gin.Context) {
-	c.HTML(http.StatusOK, "admin.html", nil)
+	c.HTML(http.StatusOK, "login.html", nil)
 }
 
 /*
-Check if Receipt with `:receiptNumber` exists in the database
+Check if Receipt or Student with `:ID` exists in the database
 
 Returns JSON in the form:
 
 	{ "exists": true || false }
 */
-func CheckReceipt(c *gin.Context) {
-	// Get receipt from url
-	receiptNumber := c.Param("receiptNumber")
-	var receiptModel models.Receipts
-	// Check if a specific value exists in the receipts table
-	result := database.DB.Where("Number = ?", receiptNumber).First(&receiptModel)
+func Validate(c *gin.Context) {
+	// get type from url
+	modelID := c.Param("id")
+	path := c.FullPath()
+	var result *gorm.DB
+
+	switch path {
+	case "/validate/receipts/:id":
+		var receiptModel models.Receipts
+		// Check if value exists in the receipts table
+		result = database.DB.Where("Number = ?", modelID).First(&receiptModel)
+
+	case "/validate/students/:id":
+		var studentModel models.Student
+		// Check if value exists in the students table
+		result = database.DB.Where("loan_number = ?", modelID).First(&studentModel)
+	}
 
 	if errors.Is(result.Error, gorm.ErrRecordNotFound) {
-		// Value does not exist in the receipts table
-		c.JSON(http.StatusOK, gin.H{
+		// Value does not exist in the table
+		c.JSON(http.StatusNotFound, gin.H{
 			"exists": false,
 		})
 	} else {
-		// Value exists in the receipts table
 		c.JSON(http.StatusOK, gin.H{
 			"exists": true,
 		})
+	}
+}
+
+/*
+Reruns the form specified by the `:formId`.
+
+	Example usage:
+	  fetch("./forms/first")
+	  fetch("./forms/returning")
+*/
+func GetForm(c *gin.Context) {
+	// Get FormID from url
+	formID := c.Param("formID")
+
+	// Serve Form with matching formID
+	switch formID {
+	case "first":
+		c.HTML(http.StatusOK, "firstYearForm.html", nil)
+	case "returning":
+		c.HTML(http.StatusOK, "returningForm.html", nil)
+	default:
+		c.HTML(http.StatusNotFound, "notFound.html", nil)
 	}
 }
 
@@ -58,112 +85,84 @@ Returns JSON in the form:
 func GetStudent(c *gin.Context) {
 	// Get student loan number from url
 	loanNumber := c.Param("loanNumber")
-	var student models.Student
+	var studentModel models.Student
 	// Check if a specific value exists in the students table
-	result := database.DB.Where("LoanNumber = ?", loanNumber).First(&student)
+	result := database.DB.Where("loan_number = ?", loanNumber).First(&studentModel)
 
 	if errors.Is(result.Error, gorm.ErrRecordNotFound) {
-		// Value does not exist in the receipts table
-		c.JSON(http.StatusOK, gin.H{
-			"exists": false,
-		})
+		c.Status(http.StatusInternalServerError)
+		log.Fatal("Error: Failed to fetch Student record")
+		return
 	} else {
 		// Value exists in the receipts table
 		c.JSON(http.StatusOK, gin.H{
-			"exists":  true,
-			"student": student,
+			"student": studentModel,
 		})
 	}
-}
-
-// Used on the admin dashboard to display all students
-func GetAllStudents(c *gin.Context) {
-	var student models.Student
-	database.DB.First(&student)
-	c.JSON(http.StatusOK, gin.H{
-		"student": student,
-	})
-}
-
-/*
-Reruns the form specified by the formId.
-
-	Example usage:
-	  fetch("./forms/first")
-	  fetch("./forms/returning")
-*/
-func GetForm(c *gin.Context) {
-	// Get FormID from url
-	formID := c.Param("formID")
-
-	// Get Form which matches the formID from database
-	switch formID {
-	case "first":
-		c.HTML(http.StatusOK, "firstYearForm.html", nil)
-	case "returning":
-		c.HTML(http.StatusOK, "returningForm.html", nil)
-	default:
-		c.HTML(http.StatusNotFound, "notFound.html", nil)
-	}
-
 }
 
 // Creates a student record with the fields passed in through the request
 func CreateStudent(c *gin.Context) {
 	// Get Data from POST request
 	var data struct {
-		student  models.Student
-		guardian models.Guardian
+		models.Student
+		models.Guardian
 	}
 	c.Bind(&data)
 
-	// Create a new post
-	student := models.Student{
-		NRC:           data.student.NRC,
-		Name:          data.student.Name,
-		Programme:     data.student.Programme,
-		YearOfStudy:   data.student.YearOfStudy,
-		StudentNumber: data.student.StudentNumber,
-		LoanNumber:    data.student.LoanNumber,
-		// Bank Details
-		Bank:          data.student.Bank,
-		Branch:        data.student.Branch,
-		AccountName:   data.student.AccountName,
-		AccountNumber: data.student.AccountNumber,
-	}
+	// Create a new record with Guardian Model
 	guardian := models.Guardian{
-		GuardianName:  data.guardian.GuardianName,
-		Relationship:  data.guardian.Relationship,
-		Gender:        data.guardian.Gender,
-		Nationality:   data.guardian.Nationality,
-		Address:       data.guardian.Address,
-		Town:          data.guardian.Town,
-		Province:      data.guardian.Province,
-		PostalAddress: data.guardian.PostalAddress,
-		Phone:         data.guardian.Phone,
-		Email:         data.guardian.Email,
+		GuardianName:  data.GuardianName,
+		GuardianNRC:   data.GuardianNRC,
+		Relationship:  data.Relationship,
+		Gender:        data.Gender,
+		Nationality:   data.Nationality,
+		Address:       data.Address,
+		Town:          data.Town,
+		Province:      data.Province,
+		PostalAddress: data.PostalAddress,
+		Phone:         data.Phone,
+		Email:         data.Email,
 	}
-	guardianResult := database.DB.Create(&guardian)
-	studentWrite := database.DB.Create(&student)
 
-	// Return the post
-	if studentWrite.Error != nil {
-		c.Status(http.StatusInternalServerError)
-		log.Fatal("Error: Failed to add Student record")
-		return
-	} else {
-		c.JSON(http.StatusOK, gin.H{
-			"student": student,
-		})
-	}
-	// Return the post
+	// Upload guardian first
+	guardianResult := database.DB.Create(&guardian)
+
 	if guardianResult.Error != nil {
 		c.Status(http.StatusInternalServerError)
 		log.Fatal("Error: Failed to add Guardian record")
 		return
 	} else {
-		c.JSON(http.StatusOK, gin.H{
-			"guardian": guardian,
-		})
+		// If no error, upload student record with guardian ID as foreign key
+		student := models.Student{
+			NRC:           data.NRC,
+			Name:          data.Name,
+			Programme:     data.Programme,
+			Degree:        data.Degree,
+			School:        data.School,
+			YearOfStudy:   data.YearOfStudy,
+			StudentNumber: data.StudentNumber,
+			LoanNumber:    data.LoanNumber,
+			// Bank Details
+			Bank:          data.Bank,
+			Branch:        data.Branch,
+			AccountName:   data.AccountName,
+			AccountNumber: data.AccountNumber,
+			// Guardian
+			Guardian: guardian.ID, //ID of guardian which was just inserted
+		}
+		studentWrite := database.DB.Create(&student)
+
+		// Return the post
+		if studentWrite.Error != nil {
+			c.Status(http.StatusInternalServerError)
+			log.Fatal("Error: Failed to add Student record")
+			return
+		} else {
+			c.JSON(http.StatusOK, gin.H{
+				"student":  student,
+				"guardian": guardian,
+			})
+		}
 	}
 }
