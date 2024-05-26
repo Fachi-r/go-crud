@@ -13,30 +13,42 @@ func init() {
 }
 
 func main() {
-
+	/*
+		1. Setup router with Gin
+	*/
 	r := gin.Default()
 	r.Use(cors.Default())
-	// Load Static assets (CSS files, JavaScript files)
+
+	/*
+		2. Load Static assets (CSS files, JavaScript files) and HTML files
+	*/
 	r.Static("/assets", "./assets")
-	// Load HTML files
 	r.LoadHTMLGlob("assets/html/*")
 
-	/* 2. Setup website routes*/
-	// Home Page (Login with receipt)
+	/*
+		3. Setup website routes
+	*/
+	// HOME PAGE
 	r.GET("/", controllers.IndexPage)
-
-	// Admin Page routes
-	r.GET("/admin", controllers.AdminPage)
-
-	// After login, serve the form specified by formID
-	r.GET("/forms/:id", controllers.GetForm)
-
 	// Validate receipt number
-	r.GET("/api/receipts/:receiptNumber", controllers.CheckReceipt)
+	r.GET("/validate/receipts/:id", controllers.Validate)
 	// Validate student loan number
-	// Get a specific student record
+	r.GET("/validate/students/:id", controllers.Validate)
+
+	// SPECIFIC FORMS based on FORMID
+	r.GET("/forms/:formID", controllers.GetForm)
+
+	// Get All, or a specific student record
 	r.GET("/api/students", controllers.GetAllStudents)
 	r.GET("/api/students/:loanNumber", controllers.GetStudent)
+	// Create a student Record
+	r.POST("/api/students", controllers.CreateStudent)
 
+	// ADMIN PAGE
+	r.GET("/admin", controllers.AdminPage)
+
+	/*
+		4. Run the Server
+	*/
 	r.Run()
 }
