@@ -26,3 +26,8 @@ func LoadEnvVariables() {
 		log.Fatal("Error loading .env file")
 	}
 }
+
+func init() {
+	LoadEnvVariables()
+	ConnectToDB()
+}

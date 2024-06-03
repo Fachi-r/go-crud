@@ -1,16 +1,33 @@
 /**
  * Enter Receipt Number of purchased `#form`
-      - The receipt number is only used as a proof of payment for any of the forms.
+      - The receipt number is used as a proof of payment for any of the forms.
       - The user selects what form they are signing up for (First year or returning student form) using  a `#checkbox` in this case
-      - If they are applying for the first time, they only have to enter the receipt number. they are then presented with the first year form to enter all their details.  After the form has been submitted successfully, their student record is created in the database with the given details. They are then presented with their new student loan number which will be used when they apply as a returning student to fetch their details from the database.
+      - If they are applying for the first time, they only have to enter the receipt number. They are then presented with the first year form to enter all their details.  After the form has been submitted and their files uploaded successfully, their student record is created in the database with the given details. They are then redirected here with their new student loan number which will be displayed to them on this page.
         
-      - If they are a returning student, they have to enter their receipt number for the form they just bought, student loan number, and current year of study. The data of the student is then fetched accordingly.
+      - If they are a returning student, they have to enter their student loan number as well, and the same procedure is carried out. The data of the student is then fetched accordingly to automatically fill in the form so that all they have to do is update their information where needed.
       - `#note` After someone applies, the receipt is removed from the database, to avoid someone trying to use the same receipt as proof of payment.
  */
 
+// If we've been redirected after uploading files, we need to
+// check url for upload details
+const params = new URL(window.location.href).searchParams;
+const success = params.get('success');
+const loanNumber = params.get('loan_number');
+
+if (success === "true") {
+   // display Success modal
+   document.getElementById("modal-btn").click()
+
+   if (loanNumber == null) {
+      document.querySelector(".modal-body").innerHTML =
+         `<h4>Your details have been uploaded successfully!</h4>`
+   } else {
+      document.getElementById("loan-number-div").innerHTML = loanNumber
+   }
+}
+
 const form = document.getElementById("form")
 const checkbox = document.getElementById("checkbox")
-const submitBtn = document.querySelector("submit_btn")
 
 // This runs on form submission
 form.addEventListener("submit", validate)
@@ -68,8 +85,8 @@ async function validate(event) {
          console.log("Result => ", data.exists);
 
          if (data.exists) {
-            /* Redirect to returning student form with loan number*/
-            window.location.href = `http://localhost:5000/forms/returning/?loan_number=${loanNumber.value}`
+            /* Redirect to returning student form with loan number and receipt*/
+            window.location.href = `http://localhost:5000/forms/returning/?loan_number=${loanNumber.value}&receipt=${receipt.value}`
          } else {
             loanNumber.classList.add("is-invalid")
             return
@@ -78,7 +95,8 @@ async function validate(event) {
          console.error('Error:', error);
          return
       }
-   } else {
+   }
+   else {
       /* Redirect to first year form with receipt number*/
       document.location.href = `http://localhost:5000/forms/first/?receipt=${receipt.value}`
    }

@@ -1,0 +1,23 @@
+li {
+	padding-bottom: 1rem;
+}
+li::marker {
+	font-weight: bold;
+}
+section h3 {
+	text-transform: uppercase;
+}
+
+img {
+	aspect-ratio: 2/0.825;
+	height: 100px;
+}
+
+.inline-input {
+	border: none;
+	border-bottom: 3px dotted;
+	border-radius: 3px 3px 0px 0px;
+	outline: none;
+	text-align: center;	
+	height: 1.75rem;
+}

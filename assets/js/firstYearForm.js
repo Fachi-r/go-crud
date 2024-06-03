@@ -16,31 +16,33 @@
 
    `#note` - The Student and Guardian are two separate tables. But in this form, they are sent in a single object. The backend separates the fields appropriately and handles any errors
  */
-const form = document.getElementById("form")
-form.addEventListener("submit", submitForm)
-
-// Loan number is automatically generated for first year students
-var LoanNumber = Math.floor(Math.random() * 10000000000)
-
-var formIDDiv = document.querySelector(".form_id")
-formIDDiv.innerText = Math.floor(Math.random() * 10000)
 
 // Get Data from URL and update the appropriate fields.
-// Assuming "localhost:5000/forms/?receipt=1234" is your URL
-var params = new URLSearchParams(window.location.search)
-var receipt = params.get('receipt'); // is the string "1234"
-var receiptDiv = document.querySelector(".receipt_number")
-receiptDiv.innerHTML = `${receipt}`
+// Assuming "localhost:5000/forms/first?receipt=1234" is your URL
+const params = new URLSearchParams(window.location.search)
+const receipt = params.get('receipt'); // is the string "1234"
 
+const receiptDiv = document.querySelector(".receipt_number")
+const formIDDiv = document.querySelector(".form_id")
+const dateDivs = document.querySelectorAll(".date")
+const NameDiv = document.getElementById("student-name")
+const studentNameDivs = document.querySelectorAll(".student_name")
+const form = document.getElementById("form")
+
+// Loan number is automatically generated for first year students
+const LoanNumber = Math.floor(Math.random() * 10000000000)
+
+/* 
+1. Update static fields 
+*/
+receiptDiv.innerHTML = `${receipt}`
+// Update all form id elements to a random id
+formIDDiv.innerText = Math.floor(Math.random() * 10000)
 // Update all dates to today's date
-var dateDivs = document.querySelectorAll(".date")
 dateDivs.forEach(date => {
    date.innerHTML = `${new Date().toDateString()}`
 });
-
 // Update all name fields to the student name
-var NameDiv = document.getElementById("student-name")
-var studentNameDivs = document.querySelectorAll(".student_name")
 NameDiv.addEventListener("change", (event) => {
    studentNameDivs.forEach(div => {
       div.innerHTML = event.target.value
@@ -48,9 +50,7 @@ NameDiv.addEventListener("change", (event) => {
 })
 
 /** This function gets all the data from the form inputs, and creates an Object with them to post to the database */
-async function submitForm(event) {
-   // Prevent page from reloading
-   event.preventDefault()
+async function submitForm() {
    // Get Values from Form
    let Programme = document.getElementById("student-program").value
    let YearOfStudy = document.getElementById("student-year").value
@@ -68,7 +68,7 @@ async function submitForm(event) {
    let GuardianName = document.getElementById("guardian-name").value
    let GuardianNRC = document.getElementById("guardian-nrc").value
    let Nationality = document.getElementById("guardian-nationality").value
-   var Gender = document.getElementById("guardian-gender").value;
+   let Gender = document.getElementById("guardian-gender").value;
    let Relationship = document.getElementById("guardian-relationship").value
    let Address = document.getElementById("guardian-address").value
    let Town = document.getElementById("guardian-town").value
@@ -76,9 +76,6 @@ async function submitForm(event) {
    let PostalAddress = document.getElementById("guardian-postal_address").value
    let Phone = document.getElementById("guardian-phone").value
    let Email = document.getElementById("guardian-email").value
-
-   // Loan number is automatically generated for first year students
-   let LoanNumber = Math.floor(Math.random() * 10000000000)
 
    // Make sure all keys match the keys used in the database models exactly
    var formData = {
@@ -111,8 +108,6 @@ async function submitForm(event) {
    }
 
    console.log("Posting data...");
-
-   console.log("Student Number => ", formData.StudentNumber);
    try {
       const response = await fetch("http://localhost:5000/api/students", {
          method: 'POST',
@@ -125,14 +120,31 @@ async function submitForm(event) {
       if (!response.ok) {
          throw new Error(`HTTP error! status: ${response.status}`);
       }
-
       let data = await response.json();
       console.log(data);
-
-      // After Form Submission, show Student Loan Number
-      let body = document.querySelector(".body")
-      body.innerHTML = `<code>${data}</code>`
-   } catch (error) {
-      console.error('Error:', error);
+   }
+   catch (error) {
+      console.error('Failed to post data:', error);
    }
 }
+
+async function deleteReceipt() {
+   try {
+      const response = await fetch(`http://localhost:5000/api/receipts/${receipt}`, {
+         method: 'DELETE'
+      });
+      if (!response.ok) {
+         throw new Error(`HTTP error! Failed to Delete. Status: ${response.status}`)
+      }
+   } catch (error) {
+      console.error('Failed to delete receipt:', error)
+   }
+}
+
+form.addEventListener("submit", async (event) => {
+   event.preventDefault();
+   await submitForm()
+   await deleteReceipt()
+   // Redirect to document upload page
+   window.location.href = `http://localhost:5000/forms/first/docs?loan_number=${LoanNumber}`
+})

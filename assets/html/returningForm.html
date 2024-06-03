@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Returning Student Form</title>
+		<link rel="stylesheet" href="/assets/css/forms.css" />
+		<script src="/assets/js/returningForm.js" defer></script>
+		<!-- Bootstrap links -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+			crossorigin="anonymous" />
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+			crossorigin="anonymous"
+			defer></script>
+		<link
+			rel="shortcut icon"
+			href="/assets/images/favicon.ico"
+			type="image/x-icon" />
+		<link rel="apple-touch-icon" href="/assets/images/favicon.ico" />
+	</head>
+	<body>
+		<section class="body container col-md-7 my-5">
+			<header class="header">
+				<div class="mb-4 float-right">
+					<div class="col-md-6">
+						HELSB / SL /
+						<span id="form_number">Form</span>
+						/
+						<span class="form_id"></span>
+					</div>
+				</div>
+
+				<div class="logo mb-4">
+					<img
+						src="/assets/images/logo.png"
+						class="rounded mx-auto d-block image"
+						alt="HELSB Logo" />
+				</div>
+
+				<div class="distribution mb-4">
+					<i>Distribution</i><br />
+					<b>Copy - Student Copy</b><br />
+					<b>Copy - Student File</b><br />
+					<b>Copy - Student Finance</b>
+				</div>
+			</header>
+
+			<form id="form" class="needs-validation">
+				<section id="details-section" class="row g-3 mb-4">
+					<div class="col student-details">
+						<!-- Student Details -->
+						<div class="col">
+							<label for="student-program" class="form-label">
+								Programme of Study
+							</label>
+							<input
+								id="student-program"
+								type="text"
+								class="form-control"
+								required
+								disabled
+								aria-disabled="true" />
+						</div>
+
+						<div class="col">
+							<label for="student-year" class="form-label">
+								Current Year of Study:
+							</label>
+							<select
+								id="student-year"
+								class="form-select"
+								aria-label="Disabled select"
+								required>
+								<option value="2">Second</option>
+								<option value="3">Third</option>
+								<option value="4">Fourth</option>
+								<option value="5">Fifth</option>
+							</select>
+						</div>
+
+						<div class="col">
+							<label for="student-loan_number" class="form-label">
+								Student Loan No.:
+							</label>
+							<input
+								id="student-loan_number"
+								type="number"
+								class="form-control"
+								required
+								disabled
+								aria-disabled="true" />
+						</div>
+
+						<div class="col">
+							<label for="student-number" class="form-label">
+								University Student ID:
+							</label>
+							<input
+								id="student-number"
+								type="number"
+								class="form-control"
+								required
+								disabled
+								aria-disabled="true" />
+						</div>
+
+						<div class="col">
+							<label for="student-nrc" class="form-label">NRC/No.</label>
+							<input
+								id="student-nrc"
+								type="text"
+								class="form-control"
+								required
+								disabled
+								aria-disabled="true" />
+						</div>
+					</div>
+
+					<div class="col bank-details">
+						<!-- Bank Details -->
+						<div class="col">
+							<label for="bank-name" class="form-label"
+								>Name of Bank</label
+							>
+							<input
+								id="bank-name"
+								type="text"
+								class="form-control"
+								required />
+						</div>
+
+						<div class="col">
+							<label for="account-name" class="form-label"
+								>Name of Account</label
+							>
+							<input
+								id="account-name"
+								type="text"
+								class="form-control"
+								required />
+						</div>
+
+						<div class="col">
+							<label for="bank-branch" class="form-label"
+								>Name of Bank Branch</label
+							>
+							<input
+								id="bank-branch"
+								type="text"
+								class="form-control"
+								required />
+						</div>
+						<div class="col">
+							<label for="account-number" class="form-label">
+								Bank Account No.
+							</label>
+							<input
+								id="account-number"
+								type="text"
+								class="form-control"
+								required />
+						</div>
+					</div>
+				</section>
+
+				<section id="agreement-clause" class="mb-4">
+					<h3 class="text-center fw-bold">Student Loan Renewal Agreement Form</h3>
+					<p>
+						An agreement made and entered into between the Higher
+						Education Loans and Scholarships Board, (herein called the
+						Loans Board) of the first part; and
+						<input
+							id="student-name"
+							class="inline-input w-50"
+							type="text"
+							placeholder="Enter full name"
+							required
+							disabled
+							aria-disabled="true" />
+						(hereinafter called the Student) of the second part;
+					</p>
+
+					<p>
+						<b>WHEREAS</b>, the student wishes to pursue a course of
+						studies at The University Of Zambia, (Hereinafter called the
+						Institution) for purpose of acquiring the qualification of
+						<input
+							id="student-degree"
+							type="text"
+							class="inline-input w-25"
+							placeholder="e.g Bachelor's"
+							required
+							disabled
+							aria-disabled="true" />
+						degree in the School of
+						<input
+							id="student-school"
+							type="text"
+							class="inline-input w-25"
+							placeholder="e.g Natural Science"
+							required
+							disabled
+							aria-disabled="true" />
+					</p>
+					<p>
+						<b>AND WHEREAS</b>, the student has applied to the Loans Board
+						for a loan to enable him/her to attend the institution for
+						that purpose:
+					</p>
+					<p>
+						<b>NOW THEREFORE</b>, in consideration of the undertaking by
+						the student herein contained, the Board grants to the student
+						such a loan by making payment for the following:
+					</p>
+					<ul>
+						<p>
+							(a) A stipulated amount of tuition fees paid directly to
+							the university
+						</p>
+						<p>
+							(b) A stipulated amount of accommodation fees paid directly
+							to the university
+						</p>
+						<p>
+							(c) Fixed amounts towards: Meal allowance, Book allowance,
+							Research/Project allowance and accommodation refund (only
+							eligible students) paid directly to the student through a
+							Bank Account.
+						</p>
+					</ul>
+					<p>
+						<b
+							>NOTE: Any amount payable to the student is determined by
+							the Board at the time of application, and is not negotiable
+							by the student or students' union.</b
+						>
+					</p>
+				</section>
+
+				<section id="conditions-of-agreement" class="mb-4">
+					<h3 class="fw-bold">CONDITIONS OF THE LOAN AGREEMENT</h3>
+					<ul>
+						<p>
+							<b>(a)</b> The loan is only valid for one academic
+							year/semester but <b>may be</b> renewed on application
+							after production of satisfactory academic results;
+						</p>
+						<p>
+							<b>(b)</b> Part of the loan due to the student shall
+							include payment towards insurance of the loan;
+						</p>
+						<p>
+							<b>(c)</b> Part of the loan due to the student may be paid
+							to the beneficiary through a bank account
+							<b> as funds become available; </b>
+						</p>
+						<p>
+							<b>(d)</b> Students awarded the loan are expected to
+							<b>meet any shortfall</b> not covered by the loan;
+						</p>
+						<p>
+							<b>(e)</b> Students in receipt of the loan or scholarship
+							provided by the Board will not qualify for any other offer
+							at the same level of qualification.
+						</p>
+						<p>
+							<b>(f)</b> The loan is given to obtain one study programme
+							and it <b>will not be extended</b> to enable students to
+							<b>undertake an additional or higher qualification</b> than
+							that for which the selection was made.
+						</p>
+					</ul>
+					<p class="pt-3">
+						<b
+							>NOTE: The board will only effect the loan if the student
+							shows evidence of registration with the university and has
+							a valid bank account</b
+						>
+					</p>
+					<ol class="pt-3">
+						<li>
+							In consideration of the Loan, the student undertakes.
+							<ul>
+								<p>
+									(a) To attend the institution for an academic
+									year/semester as may be approved by the Board,
+								</p>
+								<p>
+									(b) <b>Not to change</b> his/her program of study
+									without the consent of the Board;
+								</p>
+								<p>
+									(c) To exercise <b>due diligence</b> in his/her
+									course of studies during the whole of the period
+									specified in paragraph (a) of this clause and to
+									exercise his/her best endeavors to pass within that
+									period, the final examination at the institution
+									entitling him/her to the award of a degree in respect
+									of the profession for which the course of studies was
+									undertaken (hereinafter called the qualifying
+									examination);
+								</p>
+								<p>
+									(d) Upon completion of his/her studies at the
+									institution, he/she shall be required to declare
+									his/her employment details and contact address to the
+									Board for the purpose of loan recovery.
+								</p>
+							</ul>
+						</li>
+
+						<li>
+							The <b><i>loan repayment procedures</i></b> shall be as
+							follows:
+							<ul>
+								<p>
+									(a) Within one year after completion of studies, or
+									upon termination of such studies for any reason, the
+									loan beneficiary shall commence the repayment of the
+									loan at a minimum rate of 15% interest on reducing
+									balances;
+								</p>
+								<p>
+									(b) The loan shall be repaid in a period of not more
+									than ten (10) years:
+								</p>
+								<p>
+									(c) A loan beneficiary may repay the loan wholly or
+									in part before the due date;
+								</p>
+								<p>
+									(d) The loan beneficiary shall make the repayment of
+									the loan:
+								</p>
+								<ul>
+									<p>(i) In person to the Board,</p>
+									<p>
+										(ii) Through selected Banks on the advice of the
+										Loans Board, or
+									</p>
+									<p>(iii) Through employers to the Board.</p>
+								</ul>
+							</ul>
+						</li>
+
+						<!-- ...previous sections... -->
+
+						<li>
+							The obligations of the loan beneficiary's Parents/Guardian
+							and Guarantor are to ensure that:
+							<ul>
+								<p>
+									(a) The Loans Board is informed of the loan
+									beneficiary's current address and occupation, and
+								</p>
+								<p>(b) The loan beneficiary repays his/her loan.</p>
+							</ul>
+						</li>
+						<li>
+							The Board shall terminate and recover the whole or part of
+							the Loan:
+							<ul>
+								<p>
+									(a) When a student is <b>referred to part time;</b>
+								</p>
+								<p>
+									(b) When a student
+									<b>fails some course(s) and is required to repeat</b>
+									the whole academic year/semester,
+								</p>
+								<p>
+									(c) When a student fails to complete the programme of
+									study within the stipulated period.
+								</p>
+								<p>
+									(d) When a student is
+									<b>
+										excluded or redirected from a programme of
+										study</b
+									>
+									or school and is later on <b>readmitted</b> on
+									application into the same or different programme in
+									the same year or semester of study.
+								</p>
+								<p>
+									(e) When a student withdraws from or changes the
+									programme of study and is
+									<b>required to repeat</b> without a valid reason
+									approved by the Loans Board.
+								</p>
+								<p>
+									(f) When a student <b>withdraws</b> from studies and
+									later is <b>readmitted</b> and is required to
+									<b>repeat except</b> on medical grounds. Any
+									withdrawal on medical grounds shall be
+									<b>certified</b> by a Government Medical Doctor;
+								</p>
+								<p>
+									(g) When a student is
+									<b>involved in unsatisfactory conduct</b> such as
+									prolonged and unjustified absenteeism from tuition,
+									class boycott, inciting fellow students, unlawful
+									demonstration, riotous behavior or criminal
+									activities;
+								</p>
+								<p>
+									(h) In the event of the student being
+									<b>suspended</b> or <b>expelled</b> by the
+									University, notwithstanding any court proceedings
+									this may be commenced subsequently by reason of the
+									suspension or expulsion;
+								</p>
+								<p>
+									(i) When a student
+									<b>finds alternative sponsors</b> during the course
+									of the <b>academic</b> year/semester;
+								</p>
+								<p>
+									(j) For any reason which the Board,
+									<b>in its absolute discretion</b>, may consider good
+									and sufficient.
+								</p>
+							</ul>
+						</li>
+						<li>
+							The Loans Board may <b>defer the repayment</b> of any
+							amount due from the student loan beneficiary in terms of
+							this agreement for such a period or periods as it may deem
+							necessary and the granting of further time for repayment.
+							Any such relief or indulgence by the Loans Board shall not
+							be construed as a waiver of its rights to enforce the
+							provision of this agreement.
+						</li>
+						<li>
+							The loan awarded to the student shall not be extended to
+							any other person.
+						</li>
+						<li>
+							Nothing contained in this agreement shall be
+							<b>construed as imposing any liability</b> on the Board to
+							settle any debts incurred by the student for any particular
+							period or any particular capacity.
+						</li>
+						<li>
+							All the amounts paid to or on behalf of the student in
+							terms of this agreement or such proportion thereof as the
+							Board may direct shall become immediately
+							<b>repayable on demand</b> by the student who is deemed to
+							have accepted the calculation of the monies recoverable as
+							genuine pre-estimates.
+						</li>
+						<li>
+							All damages to which the Board is entitled in the event of
+							the breach of the agreement leading to the right of the
+							Board so as to demand recovery, repayment or cancellation
+							of the Loan or any part thereof shall be borne by the loan
+							beneficiary.
+						</li>
+						<li>
+							The parties are hereby deemed to have
+							<b>mutually agreed</b> upon the said payments as genuine
+							pre-estimates of the loan sustainable by the Board in the
+							events referred to and to have been stipulated for three
+							payments of the loan.
+						</li>
+					</ol>
+				</section>
+
+				<section id="general-information" class="container">
+					<h3 class="mt-3 fw-bold">GENERAL INFORMATION</h3>
+					<p class="mt-3">
+						<b>(a)</b> Note that the loan does not cover all your
+						educational requirements and so you will be expected to
+						supplement from your own resources;
+					</p>
+					<p>
+						<b>(b)</b> Should you find alternative sponsors during the
+						course of the academic year/semester please inform the Board
+						immediately, failure to which legal action may be taken
+						against you to recover the monies disbursed to you.
+					</p>
+					<p>
+						<b>(c)</b> Should you withdraw from studies during the course
+						of the academic year/semester please inform the Board
+						immediately, failure to which legal action may be taken
+						against you to recover the monies disbursed to you.
+					</p>
+					<p>
+						<b>(d)</b> All correspondence concerning the financial and
+						other administrative arrangements in connection with the loan
+						should be addressed to the Director, Higher Education Loans
+						and Scholarships Board, P. O. Box 50464, Lusaka through the
+						Registrar of your respective university.
+					</p>
+				</section>
+
+				<section id="guardian-details-form">
+					<p class="mt-5">
+						<b>IN WITNESS WHEREOF</b> the parties have set their hands on
+						the dates shown:
+					</p>
+					<div class="col-md-6">
+						<span class="student_name"></span>
+					</div>
+					<div class="mt-3">
+						On this day of <span class="date"></span>.
+					</div>
+
+					<div class="col">
+						<label for="guardian-name" class="form-label"
+							>Name of Parent/Guardian/Guarantor:</label
+						>
+						<input
+							id="guardian-name"
+							type="text"
+							class="form-control"
+							required />
+					</div>
+
+					<div class="row mt-3">
+						<div class="col-md-4">
+							<label for="guardian-nrc" class="form-label"
+								>NRC No.:</label
+							>
+							<input
+								id="guardian-nrc"
+								type="text"
+								class="form-control"
+								required />
+						</div>
+						<div class="col-md-4">
+							<label for="guardian-nationality" class="form-label"
+								>Nationality:</label
+							>
+							<input
+								id="guardian-nationality"
+								type="text"
+								class="form-control"
+								required />
+						</div>
+						<div class="col-md-4">
+							<label for="guardian-gender" class="form-label"
+								>Gender:</label
+							>
+							<select
+								id="guardian-gender"
+								class="form-select"
+								name="guardian-gender"
+								required>
+								<option value="male">Male</option>
+								<option value="female">Female</option>
+							</select>
+						</div>
+					</div>
+					<div class="mt-3">
+						<label for="guardian-relationship" class="form-label"
+							>Relationship:</label
+						>
+						<input
+							id="guardian-relationship"
+							type="text"
+							class="form-control"
+							required />
+					</div>
+					<div class="mt-3">
+						<label for="guardian-address" class="form-label"
+							>Residential Address:</label
+						>
+						<input
+							id="guardian-address"
+							type="text"
+							class="form-control"
+							required />
+					</div>
+					<div class="row mt-3">
+						<div class="col-md-6">
+							<label for="guardian-town" class="form-label"
+								>Town/District:</label
+							>
+							<input
+								id="guardian-town"
+								type="text"
+								class="form-control" />
+						</div>
+						<div class="col-md-6">
+							<label for="guardian-province" class="form-label"
+								>Province:</label
+							>
+							<input
+								id="guardian-province"
+								type="text"
+								class="form-control" />
+						</div>
+					</div>
+					<div class="mt-3">
+						<label for="guardian-postal_address" class="form-label"
+							>Postal Address:</label
+						>
+						<div class="input-group mb-3">
+							<span class="input-group-text" id="prepend">P.O.Box:</span>
+							<input
+								id="guardian-postal_address"
+								type="text"
+								class="form-control"
+								aria-describedby="prepend"
+								required />
+						</div>
+					</div>
+					<div class="row mt-3">
+						<div class="col-md-6">
+							<label for="guardian-phone" class="form-label"
+								>Mobile No.:</label
+							>
+							<div class="input-group mb-3">
+								<span class="input-group-text" id="prepend">+</span>
+								<input
+									id="guardian-phone"
+									type="tel"
+									class="form-control"
+									required />
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label for="guardian-email" class="form-label"
+								>Email Address:</label
+							>
+							<input
+								id="guardian-email"
+								type="email"
+								class="form-control" />
+						</div>
+					</div>
+					<div class="mt-5">
+						<label for="date" class="form-label">Date:</label>
+						<span class="date"></span>
+					</div>
+				</section>
+
+				<section id="declaration">
+					<h3 class="mt-5 fw-bold">DECLARATION:</h3>
+					<p class="mt-3">
+						I, <span class="student_name"></span>, understand that this is
+						a:
+					</p>
+					<p>
+						(a) loan and that I must abide by the agreement governing the
+						receipt of the student loan;
+					</p>
+					<p>
+						(b) loan and not Grant and that I have to pay back at the rate
+						of interest as may be determined by the Board on the loan paid
+						in line with the act No. 31 of 2016 and I undertake to abide
+						by this agreement and hereby agree that the loan shall be paid
+						by me in order to ensure the continuity of the Loan Scheme for
+						the benefit of others.
+					</p>
+					<p>
+						To the best of my knowledge, the information I have given is
+						the absolute truth. I also understand that any false
+						information on this form will lead to immediate forfeiture of
+						the loan and possible prosecution or both.
+					</p>
+				</section>
+
+				<button class="btn btn-primary submit_btn" type="submit">
+					Submit Form
+				</button>
+			</form>
+
+			<footer class="mt-5">
+				<p>Director - Higher Education Loans and Scholarship Board</p>
+				<p>For the Government of the Republic of Zambia</p>
+			</footer>
+		</section>
+	</body>
+</html>

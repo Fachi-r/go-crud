@@ -1,9 +1,0 @@
-li {
-	padding-bottom: 1rem;
-}
-li::marker {
-	font-weight: bold;
-}
-section h2 {
-	text-transform: uppercase;
-}

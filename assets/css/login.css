@@ -1,17 +1,8 @@
-*,
-*::after,
-*::before{
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-   list-style: none;
-}
-
 .options {
 	opacity: 0;
 	pointer-events: none;
 	transform: translateX(-50%);
-	transition: 300ms;
+	transition: 200ms ease-out;
 }
 
 .options.enable {
@@ -21,12 +12,10 @@
 }
 
 #form {
-	max-width: 50rem;
-	width: 35rem;
+	max-width: 500px;
 }
 
-section {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+#logo {
+	aspect-ratio: 1/1;
+	width: 10rem;
 }

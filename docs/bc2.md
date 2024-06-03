@@ -1,32 +1,42 @@
-HELSB/SL/[Form_number]/[form_id]
+<!-- HELSB/SL/FORM 3/2823 -->
 
-<!-- Logo / Banner -->
 # Higher Education Loans and Scholarships Board
 
 Distribution
+
 Copy - Student
-Copy - Student file
+
+Copy - Student File
+
 Copy - Student Finance
 
-Programme of Study: [student.program] 
-Name of Bank: [student.bank_name]
+<!-- Student Details -->
 
-Current Year of Study: [student.year] 
-Name of Account: [student.bank_account_name]
+Programme of Study: [student-program]
 
-University Student Identity No: [student.student_id] 
-Name of Bank Branch: [student.bank_branch]
+Current Year of Study: [student-year]
 
-Student Loan No.: [student.loan_number] 
-Bank Account No.: [student.bank_account_number]
+University Student Identity No: [student-number]
 
-NRC/No: [student.nrc]
+Student Loan No.: [student-loan_number]
+
+NRC/No.: [student-nrc]
+
+<!-- Bank Details -->
+
+Name of Bank: [student-bank]
+
+Name of Account: [student-account_name]
+
+Name of Bank Branch: [student-branch]
+
+Bank Account No.: [student-account_number]
 
 ## STUDENT LOAN RENEWAL AGREEMENT FORM
 
-An agreement made and entered into by and between [HELSB.CEO] in his/her capacity as Chief Executive Officer, Higher Education Loans and Scholarships Board, for and on behalf of the Higher Education Loans and Scholarships Board (herein called the Loans Board) of the first part; and second part; [student.name] (Hereinafter called the Student) of the second part;
+An agreement made and entered into by and between [helsb-ceo] in his/her capacity as Chief Executive Officer, Higher Education Loans and Scholarships Board, for and on behalf of the Higher Education Loans and Scholarships Board (herein called the Loans Board) of the first part; and second part; (Hereinafter called the Student) of the second part;
 
-WHEREAS, the student wishes to pursue a course of studies at THE UNIVERSITY OF ZAMBIA (Hereinafter called the Institution) for purpose of acquiring the qualification of. [student.degree] degree in the School of [student.school]
+WHEREAS, the student wishes to pursue a course of studies at THE UNIVERSITY OF ZAMBIA (Hereinafter called the Institution) for purpose of acquiring the qualification of. [student-degree] in the School of [student-school]
 
 AND WHEREAS the student has applied to the Loans Board for a loan to enable him/her to attend the institution for that purpose:
 
@@ -56,9 +66,9 @@ NOTE: The amount payable to the student is determined by the Loans Board at the 
 
 (f) The loan is given to obtain one study programme and it will not be extended to enable students to undertake an additional or higher qualification than that for which the selection was made.
 
-NOTE: The Loans Board will only effect the loan if the student shows evidence of registration with the university and has a valid bank account.
+NOTE: The Board will only effect the loan if the student shows evidence of registration with the university and has a valid bank account.
 
-[page 1]
+[page 2]
 
 1. In consideration of the Loan, the student undertakes.
 
@@ -80,15 +90,15 @@ NOTE: The Loans Board will only effect the loan if the student shows evidence of
 
    (d) The loan beneficiary shall make the repayment of the loan:
 
-   (i) In person to the Board,
+      (i) In person to the Board,
 
-   (ii) Through selected Banks on the advice of the Loans Board, or
+      (ii) Through selected Banks on the advice of the Loans Board, or
 
-   (iii) Through employers to the Board.
+      (iii) Through employers to the Board.
 
 3. The obligations of the loan beneficiary's Parents/Guardian and Guarantor are to ensure that:
 
-   (a) The Board is informed of the loan beneficiary's current address and occupation, and
+   (a) The Loans Board is informed of the loan beneficiary's current address and occupation, and
 
    (b) The loan beneficiary repays his/her loan.
 
@@ -106,27 +116,27 @@ NOTE: The Loans Board will only effect the loan if the student shows evidence of
 
    (f) When a student withdraws from studies and later is readmitted and is required to repeat except on medical grounds. Any withdrawal on medical grounds shall be certified by a Government Medical Doctor;
 
-[page 2]
+   <!-- [page 3] -->
 
-(g) When a student is involved in unsatisfactory conduct such as prolonged and unjustified absenteeism from tuition, class boycott, inciting fellow students, unlawful demonstration, riotous behavior or criminal activities;
+   (g) When a student is involved in unsatisfactory conduct such as prolonged and unjustified absenteeism from tuition, class boycott, inciting fellow students, unlawful demonstration, riotous behavior or criminal activities;
 
-(h) In the event of the student being suspended or expelled by the University, notwithstanding any court proceedings this may be commenced subsequently by reason of the suspension or expulsion;
+   (h) In the event of the student being suspended or expelled by the University, notwithstanding any court proceedings this may be commenced subsequently by reason of the suspension or expulsion;
 
-(i) When a student finds alternative sponsors during the course of the academic year/semester;
+   (i) When a student finds alternative sponsors during the course of the academic year/semester;
 
-(j) For any reason which the Board, in its absolute discretion, may consider good and sufficient.
+   (j) For any reason which the Board, in its absolute discretion, may consider good and sufficient.
 
 5. The Loans Board may defer the repayment of any amount due from the student loan beneficiary in terms of this agreement for such a period or periods as it may deem necessary and the granting of further time for repayment. Any such relief or indulgence by the Loans Board shall not be construed as a waiver of its rights to enforce the provision of this agreement.
 
-6. The loan awarded to the student shall not be extended to any other person
+6. The loan awarded to the student shall not be extended to any other person.
 
-7. Nothing contained in this agreement shall be construed as imposing any liability on the Loans Board to settle any debts incurred by the student for any particular period or any particular capacity.
+7. Nothing contained in this agreement shall be construed as imposing any liability on the Board to settle any debts incurred by the student for any particular period or any particular capacity.
 
-8. All the amounts paid to or on behalf of the student in terms of this agreement or such proportion thereof as the Loans Board may direct shall become immediately repayable on demand by the student who is deemed to have accepted the calculation of the monies recoverable as genuine pre-estimates.
+8. All the amounts paid to or on behalf of the student in terms of this agreement or such proportion thereof as the Board may direct shall become immediately repayable on demand by the student who is deemed to have accepted the calculation of the monies recoverable as genuine pre-estimates.
 
-9. All damages to which the Loans Board is entitled in the event of the breach of the agreement leading to the right of the Loans Board so as to demand recovery, repayment or cancellation of the Loan or any part thereof shall be borne by the loan beneficiary.
+9. All damages to which the Board is entitled in the event of the breach of the agreement leading to the right of the Board so as to demand recovery, repayment or cancellation of the Loan or any part thereof shall be borne by the loan beneficiary.
 
-10.   The parties are hereby deemed to have mutually agreed upon the said payments as genuine pre estimates of the loan sustainable by the Loans Board in the events referred to and to have been stipulated for the payment of the loan.
+10. The parties are hereby deemed to have mutually agreed upon the said payments as genuine pre-estimates of the loan sustainable by the Board in the events referred to and to have been stipulated for three payments of the loan.
 
 ## GENERAL INFORMATION
 
@@ -142,33 +152,30 @@ NOTE: The Loans Board will only effect the loan if the student shows evidence of
 
 IN WITNESS WHEREOF the parties have set their hands on the dates shown:
 
-Name of student:
+Name of student: [student-name] Signature: <!-- Discard -->
 
-on this day of
+On this day of [date-span]
 
-20
+Name of Parent/Guardian/Guarantor: [guardian-name] Gender: [guardian-gender] NRC No.: [guardian-nrc]
+Nationality: [guardian-nationality].
 
-Name of Parent/Guardian/Guarantor: Gender:
+Relationship: [guardian-relationship]
 
-Nationality: NRC No:
+Residential Address: [guardian-address]
 
-Relationship:
+Town/District: [guardian-town]
 
-Residential Address:
+Province: [guardian-province]
 
-Town/District:
+Postal Address: [guardian-postal_address]
 
-Province:
+Mobile No.:[guardian.phone] Email Address: [guardian-email]
 
-Postal Address:
+Signature of Parent/Guardian/Guarantor: <!-- Discard --> Date: [date-span]
 
-Mobile No.: Email Address:
+### DECLARATION
 
-Date:
-
-### DECLARATION:
-
-I, [student.name], understand that this is a:
+I, [student-name], understand that this is a:
 
 (a) loan and that I must abide by the agreement governing the receipt of the student loan;
 
@@ -176,11 +183,9 @@ I, [student.name], understand that this is a:
 
 To the best of my knowledge, the information I have given is the absolute truth. I also understand that any false information on this form will lead to immediate forfeiture of the loan and possible prosecution or both.
 
-Date: [Date.now()]
-
-Chief Executive Officer - Higher Education Loans and Scholarship Board
+Director - Higher Education Loans and Scholarship Board
 For the Government of the Republic of Zambia
 
-On this day of [Date.now()]
+On this day of [date-span]
 
 [page 4]
